@@ -1,16 +1,24 @@
 import { connect } from 'react-redux';
-import HomeView from './home-page-view';
+import HeaderView from './header-view';
 import { logoutAndRedirect } from '../login/login-reducer';
+
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.authentication.isAuthenticated,
+        race: state.race.race,
+        horse: state.horse.horse
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLogout: (t) => {
+        onLogout: () => {
             dispatch(logoutAndRedirect());
-            t.props.history.push('/');
+            window.location.href = '/login';
         }
     };
 };
 
-const HomeContainer = connect(null, mapDispatchToProps)(HomeView);
+const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(HeaderView);
 
-export default HomeContainer;
+export default HeaderContainer;

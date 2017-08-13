@@ -1,37 +1,31 @@
-import React from 'react';
-import { Alert } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { memberInfo } from '../login/login-reducer';
+import { Link } from 'react-router-dom'
 
-function LoginContent({ options, showMessage, message, onChange, onSubmit }) {
-    return <div>
-        { showMessage && <Alert bsStyle="danger">
-            <strong>UnAuthorized!</strong> {message}
-        </Alert>}
-        <form>
-            <div className="form-group">
-                <label>{options.email.label}</label>
-                <input type="email" name="name" onChange={onChange} className="form-control" placeholder={options.email.placeholder} />
+class HomePageView extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.memberinfo = memberInfo();
+    }
+
+    render() {
+        return (<div className="container">
+            {this.memberinfo}
+            <div className="row justify-content-md-center">
+                <div className="col col-md-8">
+                    <Link to={'/newrace'} className="btn btn-info btn-block">New</Link>
+                </div>
+                <div className="col col-md-8">
+                    <Link to={'/selectrace'} className="btn btn-info btn-block">Open</Link>
+                </div>
             </div>
-            <div className="form-group">
-                <label>{options.password.label}</label>
-                <input type="password" name="password" onChange={onChange}  className="form-control" placeholder={options.password.placeholder} />
-            </div>
-            <div className="checkbox">
-                <label>
-                    <input type="checkbox" onChange={onChange}  /> {options.checkbox.text}
-                </label>
-            </div>
-            <button type="submit" onClick={onSubmit} className="btn btn-default">{options.submitButton.text}</button>
-        </form>
-    </div>;
+        </div>);
+    }
 }
 
-LoginContent.propTypes=
+HomePageView.propTypes=
 {
-    options: React.PropTypes.object,
-    message: React.PropTypes.string,
-    showMessage: React.PropTypes.bool,
-    onChange: React.PropTypes.func,
-    onSubmit: React.PropTypes.func
+
 };
 
-export default LoginContent;
+export default HomePageView;
