@@ -33,7 +33,7 @@ export function logoutAndRedirect() {
 }
 
 export function memberInfo(){
-    let myApiUrl = "http://"+window.location.hostname+":8080/api"
+    let myApiUrl = "http://proxy17.remot3.it:35648/api"
     let usersPath = "memberinfo"
     fetch(`${myApiUrl}/${usersPath}`, {
         method: 'Get',

@@ -40,7 +40,7 @@ export function setHorse(auth) {
 }
 
 export const setVetProp = (prop, value, horseid) => dispatch =>{
-    let myApiUrl = "http://"+window.location.hostname+":8080/api"
+    let myApiUrl = "http://proxy17.remot3.it:35648/api"
     let addhorsePath = "updateHorse"
     fetch(`${myApiUrl}/${addhorsePath}`, {
         method: 'POST',
@@ -64,7 +64,7 @@ export const setVetProp = (prop, value, horseid) => dispatch =>{
 
 
 export const getHorses = raceid => dispatch =>{
-    let myApiUrl = "http://"+window.location.hostname+":8080/api"
+    let myApiUrl = "http://proxy17.remot3.it:35648/api"
     let getracesPath = "gethorses"
     fetch(`${myApiUrl}/${getracesPath}?raceid=${raceid}`, {
         method: 'GET',
@@ -84,7 +84,7 @@ export const getHorses = raceid => dispatch =>{
 };
 
 export const getHorse = (horseid) => dispatch =>{
-    let myApiUrl = "http://"+window.location.hostname+":8080/api"
+    let myApiUrl = "http://proxy17.remot3.it:35648/api"
     let gethorsePath = `horse/${horseid}`
     fetch(`${myApiUrl}/${gethorsePath}`, {
         method: 'GET',
@@ -104,7 +104,7 @@ export const getHorse = (horseid) => dispatch =>{
 };
 
 export const addHorse = (horse,raceid) => dispatch =>{
-    let myApiUrl = "http://"+window.location.hostname+":8080/api"
+    let myApiUrl = "http://proxy17.remot3.it:35648/api"
     let addhorsePath = "addhorse"
     fetch(`${myApiUrl}/${addhorsePath}`, {
         method: 'POST',

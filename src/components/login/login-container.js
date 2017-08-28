@@ -6,7 +6,7 @@ import { setAuthenticationAndRefresh } from './login-reducer';
 function onSubmit(e, name, password, dispatch){
     e.preventDefault();
     const form = e.target.form;
-    let myApiUrl = "http://"+window.location.hostname+":8080/api"
+    let myApiUrl = "http://proxy17.remot3.it:35648/api"
     let usersPath = "authenticate"
     fetch(`${myApiUrl}/${usersPath}`, {
         method: 'POST',
