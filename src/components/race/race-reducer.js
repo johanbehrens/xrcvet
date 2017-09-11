@@ -41,7 +41,7 @@ export const setRaceAndRefresh = (name,file) => dispatch =>{
 }
 
 export const importRace = (name, file) => dispatch =>{
-    let myApiUrl = "http://proxy17.remot3.it:35648/api"
+    let myApiUrl = "http://localhost:8080/api"
     let importHorsesPath = "importHorses"
     fetch(`${myApiUrl}/${importHorsesPath}`, {
         method: 'POST',
@@ -62,7 +62,7 @@ export const importRace = (name, file) => dispatch =>{
 };
 
 export const addRace = name => dispatch =>{
-    let myApiUrl = "http://proxy17.remot3.it:35648/api"
+    let myApiUrl = "http://localhost:8080/api"
     let addracePath = "addrace"
     fetch(`${myApiUrl}/${addracePath}`, {
         method: 'POST',
@@ -83,7 +83,7 @@ export const addRace = name => dispatch =>{
 };
 
 export const getRaces = () => dispatch =>{
-    let myApiUrl = "http://proxy17.remot3.it:35648/api"
+    let myApiUrl = "http://localhost:8080/api"
     let getracesPath = "getraces"
     fetch(`${myApiUrl}/${getracesPath}`, {
         method: 'GET',
@@ -103,7 +103,7 @@ export const getRaces = () => dispatch =>{
 };
 
 export const getRace = (raceid) => dispatch =>{
-    let myApiUrl = "http://proxy17.remot3.it:35648/api"
+    let myApiUrl = "http://localhost:8080/api"
     let getracesPath = `race/${raceid}`
     fetch(`${myApiUrl}/${getracesPath}`, {
         method: 'GET',
@@ -123,7 +123,7 @@ export const getRace = (raceid) => dispatch =>{
 };
 
 export const getRacesToImport = (raceid) => dispatch =>{
-    let myApiUrl = "http://proxy17.remot3.it:35648/api"
+    let myApiUrl = "http://localhost:8080/api"
     let getracesPath = `getracestoimport`
     fetch(`${myApiUrl}/${getracesPath}`, {
         method: 'GET',
