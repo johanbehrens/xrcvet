@@ -38,21 +38,21 @@ class HorseInfoView extends Component {
             <h3>Vet Card</h3>
             {this.props.horse &&
             <div><div className="row">
-                <div className="col-12 col-md-6">
-                    <Button title="HYDR" items={['A','B','C','D']} editable={this.edit} value={this.props.horse['HYDR'+this.props.match.params.leg]} prop={'HYDR'+this.props.match.params.leg} onClick={this.ClickOne} />
+                <div className="col-12">
+                    <Button title="HYDR" items={['A','B','C','D']} editable={this.edit} horse={this.props.horse} leg='HYDR' prop={'HYDR'+this.props.match.params.leg} onClick={this.ClickOne} />
                 </div>
-                <div className="col-12 col-md-6">
-                <Button title="LOCO" items={['A','B','C','D']} editable={this.edit} value={this.props.horse['LOCO'+this.props.match.params.leg]} prop={'LOCO'+this.props.match.params.leg} onClick={this.ClickOne}  />
+                <div className="col-12">
+                <Button title="LOCO" items={['A','B','C','D']} editable={this.edit} horse={this.props.horse} leg='LOCO' prop={'LOCO'+this.props.match.params.leg} onClick={this.ClickOne}  />
                 </div>
-                <div className="col-12 col-md-6"><Button title="HABI" items={['A','B','C','D']} editable={this.edit} value={this.props.horse['HABI'+this.props.match.params.leg]} prop={'HABI'+this.props.match.params.leg} onClick={this.ClickOne}  />
+                <div className="col-12"><Button title="HABI" items={['A','B','C','D']} editable={this.edit} horse={this.props.horse} leg='HABI' prop={'HABI'+this.props.match.params.leg} onClick={this.ClickOne}  />
                 </div>
-                <div className="col-12 col-md-6"><Button title="MEMB" items={['A','B','C','D']} editable={this.edit} value={this.props.horse['MEMB'+this.props.match.params.leg]} prop={'MEMB'+this.props.match.params.leg} onClick={this.ClickOne}  />
+                <div className="col-12"><Button title="MEMB" items={['A','B','C','D']} editable={this.edit} horse={this.props.horse} leg='MEMB' prop={'MEMB'+this.props.match.params.leg} onClick={this.ClickOne}  />
                 </div>
-                <div className="col-12 col-md-6"><Button title="CAP" items={['A','B','C','D']} editable={this.edit} value={this.props.horse['CAP'+this.props.match.params.leg]} prop={'CAP'+this.props.match.params.leg} onClick={this.ClickOne}  />
+                <div className="col-12"><Button title="CAP" items={['A','B','C','D']} editable={this.edit} horse={this.props.horse} leg='CAP' prop={'CAP'+this.props.match.params.leg} onClick={this.ClickOne}  />
                 </div>
-                <div className="col-12 col-md-6"><Button title="GUT" items={['A','B','C','D']} editable={this.edit} value={this.props.horse['GUT'+this.props.match.params.leg]} prop={'GUT'+this.props.match.params.leg} onClick={this.ClickOne}  />
+                <div className="col-12"><Button title="GUT" items={['A','B','C','D']} editable={this.edit} horse={this.props.horse} leg='GUT' prop={'GUT'+this.props.match.params.leg} onClick={this.ClickOne}  />
                 </div>
-                <div className="col-12 col-md-6"><Button title="GWB" items={['A','B','C','D']} editable={this.edit} value={this.props.horse['GWB'+this.props.match.params.leg]} prop={'GWB'+this.props.match.params.leg} onClick={this.ClickOne}  />
+                <div className="col-12"><Button title="GWB" items={['A','B','C','D']} editable={this.edit} horse={this.props.horse} leg='GWB' prop={'GWB'+this.props.match.params.leg} onClick={this.ClickOne}  />
                 </div>
 
             </div>
