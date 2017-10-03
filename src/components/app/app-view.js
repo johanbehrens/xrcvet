@@ -7,8 +7,11 @@ class App extends Component {
     }
 
   render() {
+      const hostname = window && window.location && window.location.hostname;
     return (
       <div className="App">
+          {hostname}
+
           {this.props.children}
       </div>
     );

@@ -5,6 +5,8 @@ const initialState = {
     authToken : undefined,
     message: undefined,
     session: !!sessionStorage.jwt,
+    apiAddress: 'localhost',
+    port: '8080'
 };
 
 const SET_AUTHENTICATION = buildActionName('loginView', 'SET_AUTHENTICATION');
@@ -33,7 +35,10 @@ export function logoutAndRedirect() {
 }
 
 export function memberInfo(){
-    let myApiUrl = "http://localhost:8080/api"
+    //eslint-disable-next-line
+    const hostname = window && window.location && window.location.hostname;
+
+    let myApiUrl = `http://${hostname}:8080/api`
     let usersPath = "memberinfo"
     fetch(`${myApiUrl}/${usersPath}`, {
         method: 'Get',
@@ -69,7 +74,8 @@ const loginReducer = (state = initialState, action) => {
                 ...state,
                 isAuthenticated: action.auth.success,
                 authToken: action.auth.token,
-                message: action.auth.msg
+                message: action.auth.msg,
+                apiAddress: action.auth.address
             };
         case LOG_OUT_SUCCESS:
             return {

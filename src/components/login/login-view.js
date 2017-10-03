@@ -6,6 +6,7 @@ import { Alert } from 'react-bootstrap';
             super(props, context);
             this.name = '';
             this.password = '';
+            this.location = '';
 
             this.onChangeName = this.onChangeName.bind(this);
             this.onChangePassword = this.onChangePassword.bind(this);
@@ -34,11 +35,11 @@ import { Alert } from 'react-bootstrap';
                         </div>
                     </div>
                     <div className="row justify-content-md-center">
-                    <div className="col-md-4 form-group">
-                        <label>{this.props.options.password.label}</label>
-                        <input type="password" name="password" onChange={this.onChangePassword} className="form-control"
-                               placeholder={this.props.options.password.placeholder}/>
-                    </div>
+                        <div className="col-md-4 form-group">
+                            <label>{this.props.options.password.label}</label>
+                            <input type="password" name="password" onChange={this.onChangePassword} className="form-control"
+                                   placeholder={this.props.options.password.placeholder}/>
+                        </div>
                     </div>
                 <button type="btn" onClick={e => this.props.onSubmit(e, this.name, this.password)}
                             className="btn btn-default">{this.props.options.submitButton.text}</button>

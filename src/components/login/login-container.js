@@ -6,7 +6,9 @@ import { setAuthenticationAndRefresh } from './login-reducer';
 function onSubmit(e, name, password, dispatch){
     e.preventDefault();
     const form = e.target.form;
-    let myApiUrl = "http://localhost:8080/api"
+    //eslint-disable-next-line
+    const hostname = window && window.location && window.location.hostname;
+    let myApiUrl = `http://${hostname}:8080/api`
     let usersPath = "authenticate"
     fetch(`${myApiUrl}/${usersPath}`, {
         method: 'POST',
@@ -22,7 +24,7 @@ function onSubmit(e, name, password, dispatch){
             if(json && json.success === true) {
                 window.location.href = '/';
             }
-            return ;
+            return;
         });
     })
     .catch(function(err){
@@ -58,7 +60,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmit: (e, name, password) => {
+        onSubmit: (e, name, password, location) => {
             onSubmit(e, name, password, dispatch);
         }
     };
