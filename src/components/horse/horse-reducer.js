@@ -20,7 +20,7 @@ export function setHorses(horses) {
         if (!array.find(i => {
                 return i === parseInt(item.DIST);
             })) array.push(parseInt(item.DIST));
-    });
+    }, 0);
 
     const result = {
         horses: horses,
