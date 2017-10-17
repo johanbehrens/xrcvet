@@ -5,41 +5,9 @@ class HorseInfoView extends Component {
 
     componentDidMount(){
         this.props.getHorsesAndRefresh(this.props.match.params.raceid,this.props.match.params.horseid);
-
-        this.getClass = this.getClass.bind(this);
-    }
-
-    getClass = (horse, leg) => {
-        if(!horse) return '';
-        if(horse[`HYDR${leg}`]
-            && horse[`LOCO${leg}`]
-            && horse[`HABI${leg}`]
-            && horse[`MEMB${leg}`]
-            && horse[`CAP${leg}`]
-            && horse[`GUT${leg}`]
-            && horse[`GWB${leg}`])
-        {
-            return 'btn btn-success btn-block';
-        }
-
-        if(horse[`HYDR${leg}`]
-            || horse[`LOCO${leg}`]
-            || horse[`HABI${leg}`]
-            || horse[`MEMB${leg}`]
-            || horse[`CAP${leg}`]
-            || horse[`GUT${leg}`]
-            || horse[`GWB${leg}`])
-        {
-            return 'btn btn-warning btn-block';
-        }
-
-        return 'btn btn-danger btn-block';
     }
 
     render() {
-
-
-
         return (<div className="container">
             <h1>{this.props.horse && this.props.horse.name}</h1>
             <h3>Horse Info</h3>
@@ -56,14 +24,89 @@ class HorseInfoView extends Component {
                 <div className="col-md-6 col-xs-12">CALLNAME: {this.props.horse && this.props.horse.CALLNAME}</div>
             </div>
 
-            <Link to={`/race/${this.props.match.params.raceid}/horse/${this.props.horse && this.props.horse._id}/leg/0`} className={this.getClass(this.props.horse, 0)}>Leg 1</Link>
-            <Link to={`/race/${this.props.match.params.raceid}/horse/${this.props.horse && this.props.horse._id}/leg/1`} className={this.getClass(this.props.horse, 1)}>Leg 2</Link>
-            <Link to={`/race/${this.props.match.params.raceid}/horse/${this.props.horse && this.props.horse._id}/leg/2`} className={this.getClass(this.props.horse, 2)}>Leg 3</Link>
-            <Link to={`/race/${this.props.match.params.raceid}/horse/${this.props.horse && this.props.horse._id}/leg/3`} className={this.getClass(this.props.horse, 3)}>Leg 4</Link>
-            <Link to={`/race/${this.props.match.params.raceid}/horse/${this.props.horse && this.props.horse._id}/leg/4`} className={this.getClass(this.props.horse, 4)}>Leg 5</Link>
-            <Link to={`/race/${this.props.match.params.raceid}/horse/${this.props.horse && this.props.horse._id}/leg/5`} className={this.getClass(this.props.horse, 5)}>Leg 6</Link>
+            <LegView horse={this.props.horse} raceid={this.props.match.params.raceid} leg={1} />
+            <LegView horse={this.props.horse} raceid={this.props.match.params.raceid} leg={2} />
+            <LegView horse={this.props.horse} raceid={this.props.match.params.raceid} leg={3} />
+            <LegView horse={this.props.horse} raceid={this.props.match.params.raceid} leg={4} />
+            <LegView horse={this.props.horse} raceid={this.props.match.params.raceid} leg={5} />
+            <LegView horse={this.props.horse} raceid={this.props.match.params.raceid} leg={6} />
         </div>);
     }
 }
 
 export default HorseInfoView;
+
+class LegView extends Component {
+    render() {
+        const getClass = (horse, leg) => {
+            let result = isDone(horse, leg);
+
+            if(result === 'error') return '';
+            if(result === 'success') return 'btn btn-success btn-block';
+            if(result === 'warning') return 'btn btn-warning btn-block';
+
+            return 'btn btn-danger btn-block';
+        }
+
+        const isDone = (horse, leg) => {
+            if(!horse) return 'error';
+
+            if(horse[`HYDR${leg}`]
+                && horse[`LOCO${leg}`]
+                && horse[`HABI${leg}`]
+                && horse[`MEMB${leg}`]
+                && horse[`CAP${leg}`]
+                && horse[`GUT${leg}`]
+                && horse[`GWB${leg}`])
+            {
+                return 'success';
+            }
+
+            if(horse[`HYDR${leg}`]
+                || horse[`LOCO${leg}`]
+                || horse[`HABI${leg}`]
+                || horse[`MEMB${leg}`]
+                || horse[`CAP${leg}`]
+                || horse[`GUT${leg}`]
+                || horse[`GWB${leg}`])
+            {
+                return 'warning';
+            }
+
+            return 'danger';
+        }
+
+        const getLink = (horse, leg) => {
+            let result = isDone(horse, leg);
+            if(result === 'success') return `/race/${this.props.raceid}/horse/${this.props.horse && this.props.horse._id}/leg/${this.props.leg-1}`;
+            return `/race/${this.props.raceid}/horse/${this.props.horse && this.props.horse._id}/leg/${this.props.leg-1}/Edit`;
+        }
+
+        return (<Link to={getLink(this.props.horse, this.props.leg-1)}
+                      className="row ride-card">
+            <div className="col-3 col-md-2">
+                <div className={getClass(this.props.horse, this.props.leg-1)}>open</div>
+            </div>
+            <div className="col-9 col-md-10">
+                <div className="row">
+                    <div className="bottom-border col-12">
+                        <div className="row">
+                            <div className="col-10 minus-margin">
+                                <div className="col col-12 l-algin card-big">Leg {this.props.leg}</div>
+                                <div className="col col-12 gray l-algin"></div>
+                            </div>
+                            <div className="col col-2 center arrow"> {'>'} </div>
+                        </div>
+                    </div>
+                    <div className="col col small-bottom l-algin">LOCO - <span className="gray">{this.props.horse && this.props.horse['LOCO'+(this.props.leg-1)]}</span> </div>
+                    <div className="col col small-bottom l-algin">HABI - <span className="gray">{this.props.horse && this.props.horse['HABI'+(this.props.leg-1)]}</span> </div>
+                    <div className="col col small-bottom l-algin">MEMB - <span className="gray">{this.props.horse && this.props.horse['MEMB'+(this.props.leg-1)]}</span> </div>
+                    <div className="col col small-bottom l-algin">CAP - <span className="gray">{this.props.horse && this.props.horse['CAP'+(this.props.leg-1)]}</span> </div>
+                    <div className="col col small-bottom l-algin">GUT - <span className="gray">{this.props.horse && this.props.horse['GUT'+(this.props.leg-1)]}</span> </div>
+                    <div className="col col small-bottom l-algin">GWB - <span className="gray">{this.props.horse && this.props.horse['GWB'+(this.props.leg-1)]}</span> </div>
+                </div>
+            </div>
+
+        </Link>);
+    }
+}

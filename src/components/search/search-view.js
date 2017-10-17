@@ -23,7 +23,7 @@ class SearchView extends Component {
             </div>
             <div className="row">
                 <div className="col">
-                    Search horses: <input onChange={(e) => this.props.onChange(e.target.value, this.props.searchHorsesText['distance'])} />
+                    Search: <input onChange={(e) => this.props.onChange(e.target.value, this.props.searchHorsesText['distance'])} />
                 </div>
             </div>
             <div className="row">

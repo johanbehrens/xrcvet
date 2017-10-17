@@ -1,0 +1,71 @@
+.ride-card {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    background-color: white;
+    cursor: pointer;
+}
+
+.create-event {
+    background-color: #ff3333;
+}
+
+.minus-margin {
+    margin-left: -20px;
+}
+
+.create-ride-card{
+    border-radius: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 0.5px 1.5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.bottom-border {
+    border-bottom: lightgray solid 1px;
+}
+
+.l-algin {
+    text-align: left;
+}
+
+.card-big {
+    font-size: x-large;
+}
+
+.small-bottom {
+    font-size: small;
+}
+
+.gray {
+    color: gray;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.arrow {
+    color: #0f2050;
+    font-size: xx-large;
+}
+
+.event-card {
+    color: white;
+    background-color: #4d5bac;
+    border: solid 0 #898989;
+    border-radius: 0.25rem;
+    width: 100%;
+    margin-top: -5px;
+    height: 100%;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 40px solid transparent;
+    border-right: 40px solid transparent;
+    border-bottom: 10px solid white;
+    z-index: 1000;
+    margin-top: -10px;
+}
