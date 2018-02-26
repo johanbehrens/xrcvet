@@ -3,6 +3,7 @@
     border-radius: 0.25rem;
     background-color: white;
     cursor: pointer;
+    margin-bottom:10px;
 }
 
 .create-event {

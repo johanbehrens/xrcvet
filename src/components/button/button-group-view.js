@@ -14,10 +14,12 @@ class ButtonView extends Component {
 
     render() {
 
+        const vetCard = this.props.vetCard;
+
         return (<div className="row">
             <div className="col-2"> {this.props.title}</div>
             {this.props.items.map(item => {
-                return <Button label={item} key={item} editable={this.props.editable} evaluator={item===this.props.horse[this.props.prop]} prop={this.props.prop} onClick={this.ClickOne} />;
+                return <Button label={item} key={item} editable={this.props.editable} evaluator={item === vetCard[this.props.prop]} prop={this.props.prop} onClick={this.ClickOne} />;
             })}
             {this.shouldRender(1, this.props.horse, `${this.props.leg}0`)}
             {this.shouldRender(2, this.props.horse, `${this.props.leg}1`)}

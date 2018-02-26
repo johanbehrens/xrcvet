@@ -18,6 +18,9 @@ class SearchView extends Component {
         return (<div className="container">
             <div className="row justify-content-around">
                 <div className="col-12 col-md-6">
+                    <button className="btn btn-success btn-block">Set Race Active</button>
+                </div>
+                <div className="col-12 col-md-6">
                     <Link to={`/race/${this.props.match.params.raceid}/addhorse`} className="btn btn-success btn-block">+ Horse</Link>
                 </div>
             </div>

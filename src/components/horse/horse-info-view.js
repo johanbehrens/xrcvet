@@ -4,13 +4,19 @@ import { Link } from 'react-router-dom'
 class HorseInfoView extends Component {
 
     componentDidMount(){
-        this.props.getHorsesAndRefresh(this.props.match.params.raceid,this.props.match.params.horseid);
-    }
+    this.props.getHorsesAndRefresh(this.props.match.params.raceid,this.props.match.params.horseid);
+}
 
     render() {
         return (<div className="container">
             <h1>{this.props.horse && this.props.horse.name}</h1>
             <h3>Horse Info</h3>
+
+            {this.props.horse && this.props.horse.DISQ && <div className="alert-danger alert">
+                DISQUALIFIED
+                <div className="card">{this.props.horse.REASON}</div>
+            </div>}
+
             <div className="row">
                 <div className="col-md-6 col-xs-12">BREED: {this.props.horse && this.props.horse.BREED}</div>
                 <div className="col-md-6 col-xs-12">COLOUR: {this.props.horse && this.props.horse.COLOUR}</div>
@@ -98,6 +104,7 @@ class LegView extends Component {
                             <div className="col col-2 center arrow"> {'>'} </div>
                         </div>
                     </div>
+                    <div className="col col small-bottom l-algin">HYDR - <span className="gray">{this.props.horse && this.props.horse['HYDR'+(this.props.leg-1)]}</span> </div>
                     <div className="col col small-bottom l-algin">LOCO - <span className="gray">{this.props.horse && this.props.horse['LOCO'+(this.props.leg-1)]}</span> </div>
                     <div className="col col small-bottom l-algin">HABI - <span className="gray">{this.props.horse && this.props.horse['HABI'+(this.props.leg-1)]}</span> </div>
                     <div className="col col small-bottom l-algin">MEMB - <span className="gray">{this.props.horse && this.props.horse['MEMB'+(this.props.leg-1)]}</span> </div>

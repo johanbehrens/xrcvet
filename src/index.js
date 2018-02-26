@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/app/app-container';
 import LogInPage from './components/login/login-container';
+import Heartbeat from './components/heartbeat/heartbeat-container';
 import HomePage from './components/homePage/home-page-container';
 import Header from './components/header/header-container';
 import Search from './components/search/search-container';
@@ -12,6 +13,7 @@ import AddHorse from './components/horse/horse-add-container';
 import InfoHorse from './components/horse/horse-info-container';
 import Vet from './components/vet/vet-leg-container';
 import EditVet from './components/vet/edit-vet-leg-container';
+import DisqualifyVet from './components/vet/vet-leg-disqualify-container';
 import registerServiceWorker from './registerServiceWorker';
 import configureStore from './redux/store';
 import { Provider } from 'react-redux';
@@ -42,6 +44,7 @@ ReactDOM.render(
                     <Header history={history}/>
                     <PrivateRoute exact path="/" component={HomePage} />
                     <Route path="/login" component={LogInPage} />
+                    <Route path="/heartbeat" component={Heartbeat} />
                     <Route path="/newrace" component={NewRace} />
                     <Route path="/selectrace" component={SelectRace} />
                     <Route path="/race/:raceid/search" component={Search} />
@@ -49,6 +52,7 @@ ReactDOM.render(
                     <Route exact path="/race/:raceid/horse/:horseid" component={InfoHorse} />
                     <Route exact path="/race/:raceid/horse/:horseid/leg/:leg" component={Vet} />
                     <Route exact path="/race/:raceid/horse/:horseid/leg/:leg/Edit" component={EditVet} />
+                    <Route exact path="/race/:raceid/horse/:horseid/leg/:leg/disqualify" component={DisqualifyVet} />
                 </App>
             </Switch>
     </Router>

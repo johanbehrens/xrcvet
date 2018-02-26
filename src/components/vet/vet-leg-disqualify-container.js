@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import HorseInfoView from './edit-vet-leg-view';
+import VetLegDisqualifyView from './vet-leg-disqualify-view';
 import { getRace } from '../race/race-reducer';
-import { getHorse } from '../horse/horse-reducer'
-import { loadVetCard, setVetCardAttr, saveVetCard } from './vet-reducer';
+import { getHorse } from '../horse/horse-reducer';
+import { loadVetCard, setVetCardAttr, disqualifyVetCard } from './vet-reducer';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         saveVetCard:  (vetCard, horseid, leg) => {
-            dispatch(saveVetCard(vetCard, horseid, leg));
+            dispatch(disqualifyVetCard(vetCard, horseid, leg));
         },
         setVetProp: (prop, value, horseId) => {
             dispatch(setVetCardAttr(prop, value));
@@ -27,6 +27,6 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-const HorseInfoContainer = connect(mapStateToProps, mapDispatchToProps)(HorseInfoView);
+const HorseInfoContainer = connect(mapStateToProps, mapDispatchToProps)(VetLegDisqualifyView);
 
 export default HorseInfoContainer;
