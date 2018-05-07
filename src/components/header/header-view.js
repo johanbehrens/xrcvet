@@ -14,6 +14,7 @@ class HeaderContent extends Component {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <a><Link to={`/`} className="btn" >XRC Vet</Link></a>
+            <a><Link to={`/heartbeat`} className="btn" >Heart Rate</Link></a>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
